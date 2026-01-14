@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>การ์ดเชิญงานแต่งงาน</title>
+  <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Sarabun', sans-serif;
+      background: radial-gradient(circle at top, #fff5f8, #f3dfe6);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      gap: 50px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .form-box {
+        width: 100%;
+        max-width: 420px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 420px;
+        padding: 36px 28px;
+      }
+
+      .card h1 {
+        font-size: 20px;
+      }
+
+      .card .names {
+        font-size: 19px;
+      }
+
+      .card .guest {
+        font-size: 18px;
+      }
+    }
+
+    .form-box {
+      background: #ffffff;
+      padding: 26px 30px;
+      border-radius: 18px;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.12);
+      width: 320px;
+    }
+
+    .form-box h2 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-size: 22px;
+      text-align: center;
+      font-family: 'Charm', cursive;
+    }
+
+    .form-box input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: 1px solid #d4c4b2;
+    }
+
+    .card {
+      width: 400px;
+      min-height: 280px;
+      background: linear-gradient(180deg, #fff6fa, #f2dbe4);
+      border-radius: 26px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+      padding: 32px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: 22px;
+      border: 1.8px double #caa76a;
+      pointer-events: none;
+    }
+
+    .thai-pattern {
+      position: absolute;
+      font-size: 46px;
+      color: #caa76a;
+      opacity: 0.85;
+      font-family: 'Charm', cursive;
+    }
+
+    .thai-pattern.top {
+      top: 10px;
+      left: 18px;
+    }
+
+    .thai-pattern.bottom {
+      bottom: 12px;
+      right: 20px;
+      transform: rotate(180deg);
+    }
+
+    .lily.top {
+      top: 12px;
+      left: 20px;
+    }
+
+    .lily.bottom {
+      bottom: 14px;
+      right: 22px;
+      transform: rotate(180deg);
+    }
+
+    .card h1 {
+      font-family: 'Charm', cursive;
+      font-size: 20px; /* ลดขนาดลงเล็กน้อย */
+      margin: 10px 0 16px;
+      color: #c48aa3;
+    }
+
+    .card .names {
+      font-family: 'Charm', cursive;
+      font-size: 18px;
+      margin: 8px 0;
+      color: #c08aa0;
+      font-weight: 700;
+    }
+
+    .card .names.royal-name {
+      color: #7a3f58;
+    }
+
+    .card .names.light {
+      font-weight: 400;
+      opacity: 0.85;
+    }
+
+    .card .names.light {
+      font-weight: 400;
+      opacity: 0.85;
+    }
+
+    .divider {
+      width: 90px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #caa76a, transparent);
+      margin: 16px auto;
+    }
+
+    .card .guest {
+      margin-top: 16px;
+      font-size: 17px;
+      font-weight: 600;
+      font-family: 'Charm', cursive;
+      color: #9b6b82;
+    }
+
+    .card .date {
+      margin-top: 16px;
+      font-size: 15px;
+      color: #555;
+    }
+
+    .ornament {
+      font-size: 26px;
+      color: #d4a373;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+  .royal-crest {
+      font-family: 'Charm', cursive;
+      font-size: 48px;
+      color: #d4a373;
+      opacity: 0.9;
+      margin-bottom: 6px;
+    }
+
+    .formal-text {
+      font-size: 16px;
+      color: #8a6a3f;
+      font-family: 'Charm', cursive;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ฟอร์มกรอกชื่อ -->
+    <div class="form-box">
+      <h2>กรอกชื่อผู้มางาน</h2>
+      <input 
+        type="text" 
+        placeholder="เช่น จ๊ะจ๋า ellexis" 
+        oninput="updateName(this.value)" 
+      />
+    </div>
+
+    <!-- การ์ดแต่งงาน -->
+    <div class="card">
+      <div class="ornament">༻❀༺</div>
+      <div class="guest" id="guestName">ขอเรียนเชิญ คุณ</div> 
+      <h1>ร่วมเป็นเกียรติในพิธีมงคลสมรส</h1>
+      <div class="names light">ระหว่าง</div>
+      <div class="names royal-name">ม.ร.ว. ใจพิสุทธิ์ อรุณวลัญช์</div>
+      <div class="names light">และ</div>
+      <div class="names royal-name">ม.ล. สหรัฐ รังสิมันต์เทวา</div>
+      <div class="divider"></div>
+    </div>
+  </div>
+
+  <script>
+    function updateName(name) {
+      const guest = document.getElementById('guestName');
+      if (name.trim() === "") {
+        guest.textContent = "เรียนเชิญคุณ";
+      } else {
+        guest.textContent = "เรียนเชิญคุณ " + name;
+      }
+    }
+  </script>
+</body>
+</html>
